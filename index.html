@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L.O Conciergerie — Périgueux</title>
+  <link href="https://fonts.googleapis.com/css2?family=Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Serif Pro', serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1400&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      padding: 2rem;
+    }
+
+    .hero-content { max-width: 900px; }
+    .hero h1 { font-size: clamp(2rem, 10vw, 8rem); color: #fbbf24; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 2rem; font-weight: 300; }
+    .hero p { font-size: 1.5rem; color: #fff; margin-bottom: 2rem; }
+    .hero .subtitle { font-size: 1.25rem; color: #d1d5db; margin-bottom: 3rem; }
+
+    .btn-group { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 1.25rem 2.5rem;
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: 0.3s;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .btn-primary { background: #fbbf24; color: #000; }
+    .btn-primary:hover { transform: scale(1.05); }
+    .btn-secondary { border: 2px solid #fbbf24; color: #fbbf24; }
+    .btn-secondary:hover { background: #fbbf24; color: #000; }
+
+    /* SECTIONS */
+    section { padding: 6rem 2rem; max-width: 1400px; margin: 0 auto; }
+    section#services { background: #09090b; }
+    section#offres { background: #000; border-top: 1px solid #78350f; border-bottom: 1px solid #78350f; }
+    section#services-comp { background: #09090b; border-top: 1px solid #78350f; border-bottom: 1px solid #78350f; }
+    section#faq { background: #000; border-top: 1px solid #78350f; }
+    section#contact { background: #09090b; }
+
+    .section-title { font-size: clamp(2rem, 5vw, 3rem); color: #fbbf24; margin-bottom: 1rem; text-align: center; }
+    .section-subtitle { color: #a3a3a3; text-align: center; font-size: 1.25rem; max-width: 800px; margin: 0 auto 3rem; }
+
+    /* SERVICES GRID */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .service-card {
+      border: 1px solid #92400e;
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      background: #000;
+      transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-8px); }
+    .service-card h3 { color: #fbbf24; font-size: 1.5rem; margin-bottom: 1rem; }
+    .service-card p { color: #9ca3af; }
+
+    /* OFFERS */
+    .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+    .offer-card {
+      border: 1px solid #52525b;
+      border-radius: 1.5rem;
+      padding: 3rem;
+      background: #18181b;
+    }
+    .offer-card.premium {
+      border: 2px solid #fbbf24;
+      background: #fbbf24;
+      color: #000;
+      position: relative;
+    }
+    .offer-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #000;
+      color: #fbbf24;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .offer-card h3 { font-size: 2rem; margin-bottom: 1rem; }
+    .offer-card .price { font-size: 3.5rem; margin-bottom: 0.5rem; font-weight: 300; }
+    .offer-card.premium h3 { color: #000; }
+    .offer-card.premium .price { color: #000; }
+    .offer-card ul { list-style: none; margin: 2rem 0; }
+    .offer-card li { padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .offer-card.premium li { border-bottom-color: rgba(0,0,0,0.1); }
+    .offer-card li::before { content: "✔ "; color: #fbbf24; margin-right: 0.5rem; }
+    .offer-card.premium li::before { color: #000; }
+
+    /* FAQ */
+    .faq-grid { display: grid; gap: 1.5rem; margin-top: 3rem; }
+    .faq-item {
+      border: 1px solid #92400e;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      background: #18181b;
+    }
+    .faq-item h3 { color: #fbbf24; font-size: 1.25rem; margin-bottom: 1rem; }
+    .faq-item p { color: #9ca3af; }
+
+    /* FORM */
+    .contact-section { max-width: 600px; margin: 0 auto; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; text-transform: uppercase; }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: #000;
+      border: 1px solid #52525b;
+      border-radius: 1rem;
+      padding: 1rem;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #fbbf24;
+    }
+
+    .contact-info { margin-top: 2rem; text-align: center; }
+    .contact-info p, .contact-info a { color: #9ca3af; margin: 0.75rem 0; text-decoration: none; }
+    .contact-info a:hover { color: #fbbf24; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #92400e;
+      padding: 2rem;
+      text-align: center;
+      background: #000;
+      color: #6b7280;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      section { padding: 3rem 1rem; }
+      .btn-group { flex-direction: column; }
+      .offers-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.5rem; }
+    }
+
+    .success-message {
+      border: 1px solid #22c55e;
+      background: rgba(34, 197, 94, 0.1);
+      color: #4ade80;
+      border-radius: 1rem;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>L.O Conciergerie</h1>
+    <p>Gestion haut de gamme de vos locations courte durée.</p>
+    <p class="subtitle">Votre bien. Notre expertise. Votre sérénité.</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn btn-primary">Demander une estimation</a>
+      <a href="#offres" class="btn btn-secondary">Découvrir nos offres</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <h2 class="section-title">Nos Services</h2>
+  <p class="section-subtitle">Une gestion complète et premium pour maximiser vos revenus Airbnb.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Création & optimisation annonces</h3>
+      <p>Service premium pensé pour offrir une expérience haut de gamme aux propriétaires et voyageurs.</p>
+    </div>
+    <div class="service-card">
+      <h3>Diffusion multi-plateformes</h3>
+      <p>Service premium pensé pour offrir une expérience haut de gamme aux propriétaires et voyageurs.</p>
+    </div>
+    <div class="service-card">
+      <h3>Gestion voyageurs 7j/7</h3>
+      <p>Service premium pensé pour offrir une expérience haut de gamme aux propriétaires et voyageurs.</p>
+    </div>
+    <div class="service-card">
+      <h3>Coordination ménage & linge</h3>
+      <p>Service premium pensé pour offrir une expérience haut de gamme aux propriétaires et voyageurs.</p>
+    </div>
+    <div class="service-card">
+      <h3>Accueil autonome voyageurs</h3>
+      <p>Service premium pensé pour offrir une expérience haut de gamme aux propriétaires et voyageurs.</p>
+    </div>
+    <div class="service-card">
+      <h3>Gestion complète des séjours</h3>
+      <p>Service premium pensé pour offrir une expérience haut de gamme aux propriétaires et voyageurs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OFFRES -->
+<section id="offres">
+  <h2 class="section-title">Nos Offres</h2>
+  <p class="section-subtitle">Deux formules adaptées à votre niveau d'accompagnement.</p>
+  
+  <div class="offers-grid">
+    <div class="offer-card">
+      <h3>Offre Confort</h3>
+      <div class="price">25%</div>
+      <ul>
+        <li>Création & optimisation annonces</li>
+        <li>Diffusion multi-plateformes</li>
+        <li>Gestion voyageurs 7j/7</li>
+        <li>Coordination ménage & linge</li>
+        <li>Accueil autonome voyageurs</li>
+      </ul>
+    </div>
+    
+    <div class="offer-card premium">
+      <div class="offer-badge">Recommandée</div>
+      <h3>Offre Prestige</h3>
+      <div class="price">30%</div>
+      <ul>
+        <li>Tous les services Confort</li>
+        <li>Pricing dynamique</li>
+        <li>Reporting propriétaire</li>
+        <li>Coordination dépannage</li>
+        <li>Expérience voyageurs premium</li>
+        <li>Valorisation haut de gamme</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES COMPLÉMENTAIRES -->
+<section id="services-comp">
+  <h2 class="section-title">Services Complémentaires</h2>
+  <p class="section-subtitle">Des prestations premium disponibles sur demande pour valoriser davantage votre bien.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Shooting Photo Professionnel</h3>
+      <p>Photos premium optimisées Airbnb.</p>
+      <p style="color: #fbbf24; text-transform: uppercase; font-size: 0.75rem; margin-top: 1rem;">Sur devis • Paiement unique</p>
+    </div>
+    <div class="service-card">
+      <h3>Panier de Bienvenue</h3>
+      <p>Produits locaux et accueil premium.</p>
+      <p style="color: #fbbf24; text-transform: uppercase; font-size: 0.75rem; margin-top: 1rem;">Tarif personnalisé</p>
+    </div>
+    <div class="service-card">
+      <h3>Accompagnement Premium</h3>
+      <p>Optimisation rentabilité & valorisation du bien.</p>
+      <p style="color: #fbbf24; text-transform: uppercase; font-size: 0.75rem; margin-top: 1rem;">Étude personnalisée</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2 class="section-title">Questions fréquentes</h2>
+  
+  <div class="faq-grid">
+    <div class="faq-item">
+      <h3>Quels types de biens gérez-vous ?</h3>
+      <p>Nous accompagnons les appartements, maisons et biens premium destinés à la location courte durée à Périgueux et en Dordogne.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Sur quelles plateformes diffusez-vous les annonces ?</h3>
+      <p>Nous diffusons principalement sur Airbnb et Booking.com afin de maximiser votre visibilité.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Comment sont fixés les tarifs des locations ?</h3>
+      <p>Nos outils de pricing dynamique ajustent les prix selon la saison et la demande.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Puis-je déléguer toute la gestion ?</h3>
+      <p>Oui. Notre objectif est de vous offrir une gestion 100% déléguée et sans contraintes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-section">
+    <h2 class="section-title">Contact</h2>
+    <p class="section-subtitle">Confiez votre bien à une conciergerie premium.</p>
+    
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label>Nom</label>
+        <input type="text" placeholder="Jean Dupont" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="votre@email.fr" required>
+      </div>
+      <div class="form-group">
+        <label>Description du bien</label>
+        <textarea rows="6" placeholder="Décrivez votre bien, vos besoins..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer la demande</button>
+      <div id="success-msg" class="success-message" style="display: none;">
+        ✓ Votre demande a bien été envoyée.
+      </div>
+    </form>
+    
+    <div class="contact-info">
+      <p>📧 contact@loconciergerie.fr</p>
+      <a href="https://www.instagram.com/lo.conciergerie" target="_blank">📱 @lo.conciergerie</a>
+      <p>🌐 loconciergerie.fr</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>L.O Conciergerie — Gestion Airbnb haut de gamme à Périgueux & Dordogne</p>
+  <p style="margin-top: 1rem; font-size: 0.9rem;">© 2026 L.O Conciergerie — loconciergerie.fr</p>
+</footer>
+
+<script>
+function handleSubmit(event) {
+  event.preventDefault();
+  document.getElementById('success-msg').style.display = 'block';
+  event.target.reset();
+  setTimeout(() => {
+    document.getElementById('success-msg').style.display = 'none';
+  }, 5000);
+}
+</script>
+
+</body>
+</html>
