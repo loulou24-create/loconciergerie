@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L.O Conciergerie — Périgueux</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Georgia, serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1400&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      padding: 2rem;
+    }
+
+    .hero-content { max-width: 900px; }
+    .hero h1 {
+      font-size: clamp(2rem, 10vw, 7rem);
+      color: #fbbf24;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      color: #d1d5db;
+      margin-bottom: 3rem;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .btn-primary {
+      background: #fbbf24;
+      color: #000;
+    }
+
+    .btn-secondary {
+      border: 2px solid #fbbf24;
+      color: #fbbf24;
+    }
+
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #fbbf24;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #a1a1aa;
+      margin-bottom: 3rem;
+    }
+
+    .offers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .offer {
+      border-radius: 24px;
+      padding: 2.5rem;
+      background: #18181b;
+      border: 1px solid #3f3f46;
+    }
+
+    .premium {
+      background: #fbbf24;
+      color: #000;
+      border: none;
+    }
+
+    .offer h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .price {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .offer ul {
+      list-style: none;
+    }
+
+    .offer li {
+      margin-bottom: 1rem;
+    }
+
+    .contact {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 16px;
+      border: 1px solid #3f3f46;
+      background: #000;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 16px;
+      border: none;
+      background: #fbbf24;
+      color: #000;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #3f3f46;
+      color: #71717a;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>L.O Conciergerie</h1>
+    <p>Gestion haut de gamme de vos locations courte durée.</p>
+    <p class="subtitle">Votre bien. Notre expertise. Votre sérénité.</p>
+
+    <div class="btn-group">
+      <a href="#contact" class="btn btn-primary">Demander une estimation</a>
+      <a href="#offres" class="btn btn-secondary">Découvrir nos offres</a>
+    </div>
+  </div>
+</section>
+
+<section id="offres">
+  <h2 class="section-title">Nos Offres</h2>
+  <p class="section-subtitle">Deux formules premium adaptées à vos besoins.</p>
+
+  <div class="offers">
+    <div class="offer">
+      <h3>Offre Confort</h3>
+      <div class="price">25%</div>
+
+      <ul>
+        <li>✔ Création & optimisation annonces</li>
+        <li>✔ Diffusion multi-plateformes</li>
+        <li>✔ Gestion voyageurs 7j/7</li>
+        <li>✔ Coordination ménage & linge</li>
+        <li>✔ Accueil autonome voyageurs</li>
+      </ul>
+    </div>
+
+    <div class="offer premium">
+      <h3>Offre Prestige</h3>
+      <div class="price">30%</div>
+
+      <ul>
+        <li>✔ Tous les services Confort</li>
+        <li>✔ Pricing dynamique</li>
+        <li>✔ Reporting propriétaire</li>
+        <li>✔ Coordination dépannage</li>
+        <li>✔ Expérience voyageurs premium</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <h2 class="section-title">Contact</h2>
+
+    <form action="https://formspree.io/f/mojrbyrw" method="POST">
+      <input type="text" name="nom" placeholder="Votre nom" required>
+      <input type="email" name="email" placeholder="Votre email" required>
+      <textarea name="message" rows="6" placeholder="Décrivez votre bien..." required></textarea>
+
+      <button type="submit">Envoyer la demande</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>contactloconciergerie@gmail.com</p>
+  <p>@lo.conciergerie</p>
+  <p>loconciergerie.fr</p>
+</footer>
+
+</body>
+</html>
